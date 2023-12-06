@@ -13,9 +13,9 @@ submission.addEventListener("keypress", function (event) {
 function findId(){
     document.getElementById("answer-input").value = "";
     let safeApiTotal = 903;
-    //var pokemonId = Math.floor(Math.random() * safeApiTotal);
+    var pokemonId = Math.floor(Math.random() * safeApiTotal);
     //debugging line, swap between real and test
-    var pokemonId = 640;
+    //var pokemonId = 640;
     document.getElementById("pokemonHiddenNumber").setAttribute("value", pokemonId);
     document.getElementById("hint-1").setAttribute("value", pokemonId);
     document.getElementById("hint-2").setAttribute("value", pokemonId);
