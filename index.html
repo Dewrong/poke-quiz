@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  
+  <link href="./styles.css" rel="stylesheet" />
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <title> Pokemon Quiz</title>
+</head>
+
+<body>
+    
+    <div class="heading1">
+        <h1 class="title">A Pokemon Quiz! Test your knowledge!</h1>
+      </div>
+      <button id="begin-button" type="button" onclick="findId()">Click to begin!</button>
+
+      <d id="correctAns" value></d>
+      <d id="pokemonHiddenNumber" value></d>
+      <div id="answer-box" class="answer-grid">
+        <p><input type="text" id="answer-input" value="">
+            <button id="submit-button" class="submit-btn btn" onclick="submitButton(this.value)">Submit</button>
+        <div id="validator" visibility="invisible"></div>
+        </p>
+    </div>
+      <button id="hint-1" type="button" style="display:none" onclick="createFirstHint(this.value)">Height & Weight</button>
+      <button id="hint-2" type="button" style="display:none" onclick="createSecondHint(this.value)">Type & Stat Spread</button>
+      <button id="hint-3" type="button" style="display:none" onclick="createThirdHint(this.value)">Game Introduced & Shape</button>
+      <d id="hint-1-field" style="display:none"><br><d id="height"></d><br><d id=weight></d></d>
+      <d id="hint-2-field" style="display:none"><br>Type: <d id=type></d>
+      <br> HP: <d id="statHP"></d>
+      <br> ATK: <d id="statAtk"></d>
+      <br> DEF: <d id="statDef"></d>
+      <br> SPATK: <d id="statSAt"></d>
+      <br> SPDEF: <d id="statSDf"></d>
+      <br> SPEED: <d id="statSpe"></d>
+    </d>
+    <d id="hint-3-field" style="display:none"><br>Game Premiered: <d id="game-released"></d><br>Shape: <d id=shape></d></d>
+</body>
+</html>
