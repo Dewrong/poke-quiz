@@ -13,7 +13,9 @@ submission.addEventListener("keypress", function (event) {
 function findId(){
     document.getElementById("answer-input").value = "";
     let safeApiTotal = 903;
-    var pokemonId = Math.floor(Math.random() * safeApiTotal);
+    //var pokemonId = Math.floor(Math.random() * safeApiTotal);
+    //debugging line, swap between real and test
+    var pokemonId = 640;
     document.getElementById("pokemonHiddenNumber").setAttribute("value", pokemonId);
     document.getElementById("hint-1").setAttribute("value", pokemonId);
     document.getElementById("hint-2").setAttribute("value", pokemonId);
@@ -28,6 +30,7 @@ function findId(){
     document.getElementById("hint-3-field").style.display = "none";
     document.getElementById("begin-button").innerHTML = "Try A Different Question?";
     document.getElementById("submit-button").style.display = "inline";
+    document.getElementById("answer-box").style.display = "inline";
     document.getElementById("validator").style.visibility = "hidden";
     document.getElementById("validator").innerHTML = "";
 }
@@ -101,22 +104,15 @@ async function createThirdHint(id){
 }
 
 function finishThirdHint(specimen){
-    let found = false;
-    for(i = 1; i <15 && found==false; i++){
         // replace with later https://pokeapi.co/api/v2/pokemon-species/{id or name}/
-        fetch('https://pokeapi.co/api/v2/pokemon-shape/' + i +'/')
+        fetch('https://pokeapi.co/api/v2/pokemon-species/' + specimen +'/')
             .then(species => species.json())
             .then(data => {
-                for(j =0; j < (data.pokemon_species.length) && (found == false); j++){
-                    if(data.pokemon_species[j].name == specimen){
-                        found = true;
-                        shape = data.name;
-                        shape = shape.charAt(0).toUpperCase() + shape.slice(1);
-                        document.getElementById("shape").innerHTML = shape;
-                    }
-                }
+                shape = data.shape.name;
+                shape = shape.charAt(0).toUpperCase() + shape.slice(1);
+                document.getElementById("shape").innerHTML = shape;
+                
             })
-    }
 }
 
 function submitButton(id) {
@@ -126,11 +122,12 @@ function submitButton(id) {
     fetch('https://pokeapi.co/api/v2/pokemon/' + id + '/')
     .then(species => species.json())
     .then(data => {
-        specimen = data.name;
+        specimen = data.species.name;
         console.log(specimen);
         userInput = userInput.split('.').join("");
         userInput = userInput.split(' ').join("-");
         if (specimen == userInput) {
+            document.getElementById("validator").style.visibility = "visible";
             document.getElementById("validator").innerHTML = "Correct!";
             document.getElementById("begin-button").innerHTML = "Another Question?";
             document.getElementById("hint-1").style.display = "none";
@@ -141,8 +138,6 @@ function submitButton(id) {
             document.getElementById("hint-3-field").style.display = "none";
             document.getElementById("submit-button").style.display = "none";
             document.getElementById("correctAns").value ++;
-            document.getElementById("validator").style.visibility = "invisible";
-            
           } else {
             let errorMessage = "";
             let currentMessage = "";
