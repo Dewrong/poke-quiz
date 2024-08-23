@@ -1,12 +1,10 @@
 
 
-var submission = document.getElementById("answer-input");
-submission.addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    submitButton(this.value);
-  }
-});
+// const submission = document.getElementById("answer-box");
+// submission.addEventListener("submit", function (event) {
+//     event.preventDefault();
+//     submitButton(this.value);
+//   });
 
 
 //choose a random pokemon from PokeApi
@@ -115,7 +113,15 @@ function finishThirdHint(specimen){
             })
 }
 
-function submitButton(id) {
+document.addEventListener('DOMContentLoaded', (event) => {
+    var form = document.getElementById("answer-box");
+    function handleForm(event) { event.preventDefault(); } 
+    form.addEventListener('submit', handleForm);
+});
+
+function submitButton() {
+    
+    let id = document.getElementById("submit-button").value;
     let userInput = document.getElementById("answer-input").value;
     userInput = userInput.toLowerCase();
     let specimen;

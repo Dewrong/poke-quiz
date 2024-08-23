@@ -21,12 +21,12 @@
 
       <d id="correctAns" value></d>
       <d id="pokemonHiddenNumber" value></d>
-      <div id="answer-box" class="answer-grid" style="display: none;">
+      <form id="answer-box" class="answer-grid" style="display: none;" onsubmit="submitButton()">
         <p><input type="text" id="answer-input" value="">
-            <button id="submit-button" class="submit-btn btn" onclick="submitButton(this.value)">Submit</button>
+            <button id="submit-button" class="submit-btn btn">Submit</button>
         <div id="validator" visibility="invisible"></div>
         </p>
-    </div>
+      </form>
       <button id="hint-1" type="button" style="display:none" onclick="createFirstHint(this.value)">Height & Weight</button>
       <button id="hint-2" type="button" style="display:none" onclick="createSecondHint(this.value)">Type & Stat Spread</button>
       <button id="hint-3" type="button" style="display:none" onclick="createThirdHint(this.value)">Game Introduced & Shape</button>
